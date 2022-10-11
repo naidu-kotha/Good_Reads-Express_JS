@@ -30,10 +30,9 @@ const initializeDBAndServer = async () => {
 };
 initializeDBAndServer();
 
-
-// Get Books API
-app.get("/books/", async (request, response) => {
-  let jwtToken;
+// Middleware Authentication Token
+const authenticateToken = (request, response, next) => {
+    let jwtToken;
 
     const authHeader = request.headers["authorization"];
 
@@ -43,42 +42,69 @@ app.get("/books/", async (request, response) => {
     if (jwtToken === undefined) {
         response.status(401);
         
-        response.send("Invalid Access");
+        response.send("Invalid Jwt Token");
     } else {
-        jwt.verify(jwtToken, "secretkey", async(error, user) => {
+        jwt.verify(jwtToken, "secretkey", async(error, payload) => {
             if (error) {
                 response.status(401);
         
-                response.send("Invalid Access Token");
+                response.send("Invalid Jwt Token");
             } else {
-                const {
-                    offset = 0,
-                    limit = 10,
-                    order = "ASC",
-                    order_by = "book_id",
-                    search_q = "",
-                } = request.query;
-
-                const getBooksQuery = `
-                SELECT
-                  *
-                FROM
-                  book
-                WHERE
-                  title LIKE '%${search_q}%'
-                ORDER BY ${order_by} ${order}
-                LIMIT ${limit} OFFSET ${offset};`;
-
-                const booksArray = await db.all(getBooksQuery);
-                response.send(booksArray);
+                request.username = payload.username;
+                next();
             };
         });
     };
+};
+
+
+// Get User Profile API
+app.get("/profile/", authenticateToken, async(request, response) => {
+    let { username } = request;
+
+    console.log(username);
+
+    const selectUserQuery = `
+    SELECT 
+      * 
+    FROM 
+      user 
+    WHERE 
+      username = '${username}';`;
+
+    const userDetails = await db.get(selectUserQuery);
+
+    response.send(userDetails);
+});
+
+
+// Get Books API
+app.get("/books/", authenticateToken, async (request, response) => {
+    const {
+      offset = 0,
+      limit = 10,
+      order = "ASC",
+      order_by = "book_id",
+      search_q = "",
+    } = request.query;
+
+    const getBooksQuery = `
+    SELECT
+      *
+    FROM
+      book
+    WHERE
+      title LIKE '%${search_q}%'
+    ORDER BY ${order_by} ${order}
+    LIMIT ${limit} OFFSET ${offset};`;
+
+    const booksArray = await db.all(getBooksQuery);
+    response.send(booksArray);
 });
 
 
 //Get Book API
-app.get("/books/:bookId/", async (request, response) => {
+app.get("/books/:bookId/", authenticateToken, async (request, response) => {
   const { bookId } = request.params;
   const getBookQuery = `SELECT
       *
@@ -92,7 +118,7 @@ app.get("/books/:bookId/", async (request, response) => {
 
 
 //Post Book API
-app.post("/books/", async (request, response) => {
+app.post("/books/", authenticateToken, async (request, response) => {
   const bookDetails = request.body;
   const {
     title,
@@ -131,7 +157,7 @@ app.post("/books/", async (request, response) => {
 
 
 //Put Book API
-app.put("/books/:bookId/", async (request, response) => {
+app.put("/books/:bookId/", authenticateToken, async (request, response) => {
   const { bookId } = request.params;
   const bookDetails = request.body;
   const {
@@ -169,7 +195,7 @@ app.put("/books/:bookId/", async (request, response) => {
 
 
 //Delete Book API
-app.delete("/books/:bookId/", async (request, response) => {
+app.delete("/books/:bookId/", authenticateToken, async (request, response) => {
   const { bookId } = request.params;
   const deleteBookQuery = `DELETE FROM 
       book 
@@ -181,7 +207,7 @@ app.delete("/books/:bookId/", async (request, response) => {
 
 
 //Get Author Books API
-app.get("/authors/:authorId/books/", async (request, response) => {
+app.get("/authors/:authorId/books/", authenticateToken, async (request, response) => {
   const { authorId } = request.params;
   const getAuthorBooksQuery = `SELECT
      *
@@ -222,9 +248,9 @@ app.post("/users/", async(request, response) => {
           '${gender}',
           '${location}');`;
 
-          await db.run(createUserQuery);
+        await db.run(createUserQuery);
 
-          response.send("User Created Successfully");
+        response.send("User Created Successfully");
     } else {
         response.status(400);
         response.send("Username Already Exists");
@@ -265,5 +291,3 @@ app.post("/login/", async(request, response) => {
         };
     };
 });
-
-

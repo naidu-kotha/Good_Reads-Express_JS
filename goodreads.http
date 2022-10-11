@@ -2,6 +2,9 @@ GET http://localhost:3000/books/
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsMTIzIiwiaWF0IjoxNjY1NTA1MDY3fQ.HUnCBN9rdFUNuJ7WutRZIJIibipqDC-s-F2M04B9XSc
 ###
 
+GET http://localhost:3000/profile/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsMTIzIiwiaWF0IjoxNjY1NTA1MDY3fQ.HUnCBN9rdFUNuJ7WutRZIJIibipqDC-s-F2M04B9XSc
+###
 
 GET http://localhost:3000/books/?offset=2&limit=3&search_q=potter&order_by=price&order=DESC
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsMTIzIiwiaWF0IjoxNjY1NTA1MDY3fQ.HUnCBN9rdFUNuJ7WutRZIJIibipqDC-s-F2M04B9XSc
@@ -9,10 +12,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJha
 
 
 GET http://localhost:3000/books/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsMTIzIiwiaWF0IjoxNjY1NTA1MDY3fQ.HUnCBN9rdFUNuJ7WutRZIJIibipqDC-s-F2M04B9XSc
 ###
 
 
 POST http://localhost:3000/books/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsMTIzIiwiaWF0IjoxNjY1NTA1MDY3fQ.HUnCBN9rdFUNuJ7WutRZIJIibipqDC-s-F2M04B9XSc
 Content-Type: application/json
 
 {
@@ -32,6 +37,7 @@ Content-Type: application/json
 
 
 PUT http://localhost:3000/books/41/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsMTIzIiwiaWF0IjoxNjY1NTA1MDY3fQ.HUnCBN9rdFUNuJ7WutRZIJIibipqDC-s-F2M04B9XSc
 Content-Type: application/json
 
 {
@@ -51,10 +57,12 @@ Content-Type: application/json
 
 
 DELETE http://localhost:3000/books/41/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsMTIzIiwiaWF0IjoxNjY1NTA1MDY3fQ.HUnCBN9rdFUNuJ7WutRZIJIibipqDC-s-F2M04B9XSc
 ###
 
 
 GET http://localhost:3000/authors/1/books/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsMTIzIiwiaWF0IjoxNjY1NTA1MDY3fQ.HUnCBN9rdFUNuJ7WutRZIJIibipqDC-s-F2M04B9XSc
 ###
 
 
