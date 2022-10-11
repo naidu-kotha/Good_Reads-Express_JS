@@ -1,7 +1,10 @@
 dependencies:
   bcrypt: 5.1.0
   express: 4.18.2
+<<<<<<< HEAD
   jsonwebtoken: 8.5.1
+=======
+>>>>>>> 88ca05e49745c78777397c5b89beefd719948231
   nodemon: 2.0.20
   sqlite: 4.1.2
   sqlite3: 5.1.2
@@ -191,10 +194,13 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-b8um+L1RzM3WDSzvhm6gIz1yfTbBt6YTlcEKAvsmqCZZFw46z626lVj9j1yEPW33H5H+lBQpZMP1k8l+78Ha0A==
+<<<<<<< HEAD
   /buffer-equal-constant-time/1.0.1:
     dev: false
     resolution:
       integrity: sha512-zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==
+=======
+>>>>>>> 88ca05e49745c78777397c5b89beefd719948231
   /bytes/3.1.2:
     dev: false
     engines:
@@ -355,12 +361,15 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-463v3ZeIrcWtdgIg6vI6XUncguvr2TnGl4SzDXinkt9mSLpBJKXT3mW6xT3VQdDN11+WVs29pgvivTc4Lp8v+w==
+<<<<<<< HEAD
   /ecdsa-sig-formatter/1.0.11:
     dependencies:
       safe-buffer: 5.2.1
     dev: false
     resolution:
       integrity: sha512-nagl3RYrbNv6kQkeJIpt6NJZy8twLB/2vtz6yN9Z4vRKHN4/QZJIEbqohALSgwKdnksuY3k5Addp5lg8sVoVcQ==
+=======
+>>>>>>> 88ca05e49745c78777397c5b89beefd719948231
   /ee-first/1.1.1:
     dev: false
     resolution:
@@ -739,6 +748,7 @@ packages:
     optional: true
     resolution:
       integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==
+<<<<<<< HEAD
   /jsonwebtoken/8.5.1:
     dependencies:
       jws: 3.2.2
@@ -800,6 +810,8 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Sb487aTOCr9drQVL8pIxOzVhafOjZN9UU54hiN8PU3uAiSV7lx1yYNpbNmex2PK6dSJoNTSJUUswT651yww3Mg==
+=======
+>>>>>>> 88ca05e49745c78777397c5b89beefd719948231
   /lru-cache/6.0.0:
     dependencies:
       yallist: 4.0.0
@@ -1526,7 +1538,10 @@ packages:
 specifiers:
   bcrypt: ^5.1.0
   express: ^4.17.1
+<<<<<<< HEAD
   jsonwebtoken: ^8.5.1
+=======
+>>>>>>> 88ca05e49745c78777397c5b89beefd719948231
   nodemon: ^2.0.20
   sqlite: ^4.0.19
   sqlite3: ^5.0.2
